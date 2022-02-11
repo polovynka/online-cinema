@@ -12,11 +12,10 @@
     z-index: 99;
 }
 
+
 .navigation_active {
     right: 0;
 }
-
-
 
 .navigation__list {
     margin: 0 auto;

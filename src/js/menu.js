@@ -10,7 +10,6 @@ const slideMenu = ({ openBtn, menu, classActiveMenu, closeTrigger }) => {
 	const burgerBtn = document.querySelector(openBtn);
 	const navigation = document.querySelector(menu);
 	const naviClose = document.querySelectorAll(closeTrigger);
-	console.log('naviClose: ', naviClose);
 
 	burgerBtn.addEventListener('click', () => {
 

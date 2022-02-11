@@ -1,4 +1,5 @@
-import slideMenu from "./menu.js";
+import slideMenu from "./js/menu.js";
+import styles from './styles/style.css';
 
 
 slideMenu({
@@ -8,3 +9,4 @@ slideMenu({
 	closeTrigger: '.navigation__link, .navigation__close',
 
 });
+
