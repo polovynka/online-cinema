@@ -1,5 +1,6 @@
 import slideMenu from "./js/menu.js";
 import styles from './styles/style.css';
+import renderVideo from './js/renderVideo.js';
 
 
 slideMenu({
@@ -9,4 +10,6 @@ slideMenu({
 	closeTrigger: '.navigation__link, .navigation__close',
 
 });
+
+renderVideo();
 

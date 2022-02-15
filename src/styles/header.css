@@ -23,7 +23,7 @@
     flex-grow: 1;
     height: 70px;
     padding-left: 60px;
-    background-image: url("../img/search.svg");
+    background-image: url("../images/search.svg");
     background-repeat: no-repeat;
     background-position: left 15px center;
     background-color: var(--color-second);

@@ -92,7 +92,7 @@
     width: 104px;
     height: 72px;
     background-color: var(--color-second);
-    background-image: url("../img/play.svg");
+    background-image: url("../images/play.svg");
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 6px;
