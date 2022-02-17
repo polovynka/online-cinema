@@ -1,9 +1,10 @@
-import { getTriends } from "./services";
+import { getTriends, getVideo } from "./services";
 import renderCards from "./renderCards";
 
 const filmWeek = document.querySelector('.film-week');
 
-const firstRender = data => {
+const firstRender = (data, video) => {
+	const { key } = video;
 
 	filmWeek.innerHTML = `
 	<div class="container film-week__container" data-rating="${data.vote_average || '-'}">
@@ -12,7 +13,9 @@ const firstRender = data => {
                     <p class="film-week__title--origin">${data.original_title ?? data.original_name}</p>
                 </div>
                 <h2 class="film-week__title">${data.title ?? data.name}</h2>
-                <a class="film-week__watch-trailer tube" href="https://youtu.be/V0hagz_8L3M" aria-label="смотреть трейлер"></a>
+			${key ?
+			`<a class="film-week__watch-trailer tube" href="https://youtu.be/${key}" aria-label="смотреть трейлер"></a>`
+			: ''}
             </div>
 	`
 };
@@ -23,10 +26,11 @@ const renderVideo = async () => {
 
 	const [firstCard, ...otherCards] = data.results;
 
-
 	otherCards.length = 16;
 
-	firstRender(firstCard);
+	const video = await getVideo(firstCard.id, firstCard.media_type);
+
+	firstRender(firstCard, video.results[2]);
 	renderCards(otherCards);
 
 };
