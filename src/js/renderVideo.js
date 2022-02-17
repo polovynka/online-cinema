@@ -1,11 +1,12 @@
 import { getTriends } from "./services";
+import renderCards from "./renderCards";
 
 const filmWeek = document.querySelector('.film-week');
 
 const firstRender = data => {
 
 	filmWeek.innerHTML = `
-	<div class="container film-week__container" data-rating="${data.vote_average}">
+	<div class="container film-week__container" data-rating="${data.vote_average || '-'}">
 		<div class="film-week__poster-wrapper">
                     <img class="film-week__poster" src="https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces${data.backdrop_path}" alt="постер ${data.title ?? data.name}">
                     <p class="film-week__title--origin">${data.original_title ?? data.original_name}</p>
@@ -19,7 +20,14 @@ const firstRender = data => {
 
 const renderVideo = async () => {
 	const data = await getTriends();
-	firstRender(data.results[0])
+
+	const [firstCard, ...otherCards] = data.results;
+
+
+	otherCards.length = 16;
+
+	firstRender(firstCard);
+	renderCards(otherCards);
 
 };
 
