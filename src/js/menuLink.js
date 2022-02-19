@@ -1,4 +1,4 @@
-import { getPopular, getTop } from "./services";
+import { getPopular, getTop, getTrends } from "./services";
 import renderCards from "./renderCards";
 
 
@@ -19,30 +19,31 @@ const menuLink = () => {
 				filmWeek.style.display = 'none';
 				title.textContent = target.textContent;
 
+				if (target.classList.contains('get-nav__link--triends')) {
+					getTrends()
+						.then(data => renderCards(data))
+				};
+
 				if (target.classList.contains('get-nav__link--popular-movies')) {
 					getPopular('movie')
-						.then(data => renderCards(data.results))
+						.then(data => renderCards(data, 'movie'))
 				};
 
 				if (target.classList.contains('get-nav__link--popular-tv')) {
 					getPopular('tv')
-						.then(data => renderCards(data.results))
+						.then(data => renderCards(data, 'tv'))
 				};
 
 				if (target.classList.contains('get-nav__link--top-movies')) {
 					getTop('movie')
-						.then(data => renderCards(data.results))
+						.then(data => renderCards(data, 'movie'))
 				};
 
 				if (target.classList.contains('get-nav__link--top-tv')) {
 					getTop('tv')
-						.then(data => renderCards(data.results))
+						.then(data => renderCards(data, 'tv'))
 				};
 
-				if (target.classList.contains('get-nav__link--triends')) {
-					getTriends()
-						.then(data => renderCards(data.results))
-				};
 			}
 		})
 	})
