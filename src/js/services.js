@@ -35,7 +35,7 @@ export const getTop = async (type, page = 1) => {
 };
 
 export const getVideo = async (type, id) => {
-	if (type === 'person') return null;
+	if (type === 'person') return null;//https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=<<api_key>>&language=en-US
 	const url = `${BASE_URL}${type}/${id}/videos?api_key=${API_KEY}${LANG}`;
 	return await getData(url);
 };

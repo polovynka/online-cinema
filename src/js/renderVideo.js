@@ -15,7 +15,7 @@ const firstRender = (data, { key }) => {
 	} = data;
 
 	filmWeek.innerHTML = `
-	<div class="container film-week__container" data-rating="${voteAverage || '-'}">
+	<div class="container film-week__container" data-rating="${voteAverage ?? '-'}">
 		<div class="film-week__poster-wrapper">
                     <img class="film-week__poster" src="https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces${backdropPath}" alt="постер ${title ?? name}">
                     <p class="film-week__title--origin">${originalTitle ?? originalName}</p>
@@ -32,12 +32,15 @@ const firstRender = (data, { key }) => {
 const renderVideo = async () => {
 	const data = await getTrends();
 
+
 	const [firstCard] = data.results;
 
 
 	const video = await getVideo(firstCard.media_type, firstCard.id);
+	console.log('video: ', video);
 
-	firstRender(firstCard, video?.results[0]);
+
+	firstRender(firstCard, video.results[0] ?? '');
 	renderCards(data);
 
 };

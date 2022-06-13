@@ -1,5 +1,5 @@
 import { getVideo, getPagination } from "./services";
-
+import withoutPoster from '../images/without-poster.jpg';
 const cardList = document.querySelector('.other-films__list');
 const buttonWrapper = document.querySelector('.button-pagination');
 
@@ -33,7 +33,7 @@ const renderCards = async (data, mediaType) => {
 		img.alt = `постер ${item.title ?? item.name}`;
 		img.src = item.poster_path ?
 			`https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${item.poster_path}` :
-			'http://istprof.ru/static/istprof/1450/no_poster.jpg';
+			withoutPoster;
 
 		link.append(img);
 		card.append(link);
