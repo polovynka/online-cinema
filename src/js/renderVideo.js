@@ -35,9 +35,7 @@ const renderVideo = async () => {
 
 	const [firstCard] = data.results;
 
-
 	const video = await getVideo(firstCard.media_type, firstCard.id);
-	console.log('video: ', video);
 
 
 	firstRender(firstCard, video.results[0] ?? '');
